@@ -12,6 +12,7 @@ import { obtenerMensaje } from "./utils";
 
 function Cita() {
   const [valorInput, setValorInput] = useState("");
+  const [error, setError] = useState('');
   const { cita = "", personaje = "" } =
     useAppSelector(obtenerCitaDelEstado, shallowEqual) || {};
   const estadoPedido = useAppSelector(obtenerEstadoDelPedido);
@@ -25,6 +26,18 @@ function Cita() {
     setValorInput("");
   };
 
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    
+    setValorInput(event.target.value)
+    const containsNumbers = /\d/.test(event.target.value);
+
+    if (containsNumbers) {
+      setError('¡Error! Por favor solo ingresar texto.');
+    } else {
+      setError('');
+    }
+  }
+
   return (
     <ContenedorCita>
       <TextoCita>{obtenerMensaje(cita, estadoPedido)}</TextoCita>
@@ -32,9 +45,10 @@ function Cita() {
       <Input
         aria-label="Author Cita"
         value={valorInput}
-        onChange={(e) => setValorInput(e.target.value)}
+        onChange={handleInputChange}
         placeholder="Ingresa el nombre del autor"
       />
+      {error && <p style={{background: "red", color: "white", fontSize: "1.4em"}}>{error}</p>}
       <Boton
         aria-label={valorInput ? "Obtener Cita" : "Obtener cita aleatoria"}
         onClick={onClickObtenerCita}
