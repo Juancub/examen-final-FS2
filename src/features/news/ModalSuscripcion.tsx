@@ -15,6 +15,13 @@ interface Props {
   closeNoticia: (arg: null) => void;
 }
 
+/**
+ * @param {Object} props
+ * @param {funtion} props.onClose 
+ * @param {funtion} props.onSubscription 
+ * @returns {JSX.Element} 
+ */
+
 const ModalSuscripcion = ({ onSuscribirClick, closeNoticia }: Props) => {
   
     return (

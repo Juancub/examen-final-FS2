@@ -20,6 +20,10 @@ export interface INoticiasNormalizadas {
     descripcionCorta?: string;
   }
 
+  /**
+ * @returns {JSX.Element}
+ */
+
 const Noticias = () => {
   const [noticias, setNoticias] = useState<INoticiasNormalizadas[]>([]);
   const [modal, setModal] = useState<INoticiasNormalizadas | null>(null);

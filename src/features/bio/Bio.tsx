@@ -2,6 +2,10 @@ import { useState } from "react";
 import { NombresSimpsons, INFO_SIMPSONS } from "./constants";
 import { ContenedorBio } from "./styled";
 
+/**
+ * @returns {JSX.Element} - 
+ */
+
 const Bio = () => {
   const [bioActiva, setBioActiva] = useState(
     INFO_SIMPSONS[NombresSimpsons.BART]

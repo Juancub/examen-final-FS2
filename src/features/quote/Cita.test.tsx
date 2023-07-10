@@ -2,11 +2,12 @@
 import { render, screen, fireEvent } from "../../test-utils";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
+import { API_URL } from "../../app/constants";
 import Quote from "./Cita";
 
 // Configurar el servidor MSW
 const server = setupServer(
-  rest.get("/api/quote", (req, res, ctx) => {
+  rest.get(`${API_URL}`, (req, res, ctx) => {
     const character = req.url.searchParams.get("character");
 
     if (character && parseInt(character)) {
@@ -15,10 +16,10 @@ const server = setupServer(
 
     return res(
       ctx.json({
-        quote: "Una cita",
-        character: "Un personaje",
-        image: "imagen.png",
-        characterDirection: "left",
+        quote: "I believe the children are the future... Unless we stop them now!",
+        character: "Homer",
+        image: "imagen",
+        characterDirection: "right",
       })
     );
   })

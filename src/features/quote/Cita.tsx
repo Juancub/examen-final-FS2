@@ -10,6 +10,11 @@ import {
 } from "./citaSlice";
 import { obtenerMensaje } from "./utils";
 
+/**
+ * @returns {JSX.Element} 
+ */
+
+
 function Cita() {
   const [valorInput, setValorInput] = useState("");
   const [error, setError] = useState('');
